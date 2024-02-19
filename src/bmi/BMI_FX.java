@@ -1,7 +1,5 @@
 package bmi;
 
-import org.w3c.dom.UserDataHandler;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -85,9 +83,15 @@ public class BMI_FX extends Application{
 	    errorTxt.setFont(errorFont);
 	    errorTxt.setVisible(false);
 	    
+	    //BMI Text
 	    Text bmiTxt = new Text("");
 	    bmiTxt.setX(3);
 	    bmiTxt.setY(185);
+	    
+	    //Weight Class Text
+	    Text classTxt = new Text("");
+	    classTxt.setX(3);
+	    classTxt.setY(203);
 	    
 	    //Calc Button
 	    Button calcBtn = new Button("Calculate BMI");
@@ -110,6 +114,9 @@ public class BMI_FX extends Application{
 						bmiTxt.setText("Your Body Mass Index(BMI) is " + String.format("%.1f",user.calcMBMI()));
 					}
 					
+					//Determine weight class
+					user.calcStatus();
+					classTxt.setText("You are " + user.getStatus());
 	
 				}catch(Exception e) {
 					errorTxt.setVisible(true);
@@ -120,7 +127,7 @@ public class BMI_FX extends Application{
 	    });
 	    
 		Pane calcPane = new Pane();
-		calcPane.getChildren().addAll(titleText,mesSysLbl,mesCb,heightLbl,heightTxtF,weightLbl,weightTxtF,errorTxt,calcBtn,bmiTxt);
+		calcPane.getChildren().addAll(titleText,mesSysLbl,mesCb,heightLbl,heightTxtF,weightLbl,weightTxtF,errorTxt,calcBtn,bmiTxt,classTxt);
 		return calcPane;
 	}
 
