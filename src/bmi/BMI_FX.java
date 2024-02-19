@@ -126,8 +126,26 @@ public class BMI_FX extends Application{
 	    	
 	    });
 	    
+	    //Reset Button
+	    Button resetBtn = new Button("Reset");
+	    resetBtn.setTranslateX(238);
+	    resetBtn.setTranslateY(320);
+	    
+	    resetBtn.setOnAction(new EventHandler <ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				mesCb.setValue(null);
+				heightTxtF.setText("");
+				weightTxtF.setText("");
+				bmiTxt.setVisible(false);
+				classTxt.setVisible(false);
+			}
+	    	
+	    });
+	    
+	    
 		Pane calcPane = new Pane();
-		calcPane.getChildren().addAll(titleText,mesSysLbl,mesCb,heightLbl,heightTxtF,weightLbl,weightTxtF,errorTxt,calcBtn,bmiTxt,classTxt);
+		calcPane.getChildren().addAll(titleText,mesSysLbl,mesCb,heightLbl,heightTxtF,weightLbl,weightTxtF,errorTxt,calcBtn,bmiTxt,classTxt,resetBtn);
 		return calcPane;
 	}
 
